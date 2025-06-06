@@ -1,1 +1,1 @@
-# Project1
+# Project1 it's almost done I'm just having some trouble with the words.count file. I still need it to combine the words to one item and then the count. It's just adding the hard coded variable. Still working on it.
