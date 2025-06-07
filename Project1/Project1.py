@@ -1,7 +1,7 @@
 # Purpose: Project for CSC 2017x40 to read a text file and count the number of occurrences of a word
 # in the sample text words.txt
 
-FILENAME = "B:\Assignments for school\AdvancedPythonCSC2017\Files\Project1\words.txt"
+FILENAME = "words.txt"
 word_count = len(FILENAME.split())
 word = FILENAME.split()
 count = 0
