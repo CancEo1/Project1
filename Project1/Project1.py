@@ -50,20 +50,24 @@ def count_words(words, count):
 
 # Function to write the the list into a word.count document 
 # and display it as rows
-def write_words_count(words, count):
-    words = sorted(words)
-    count += 1
-    with open(FILENAME, "r") as file:
-        for line in file:
-            line = file.read().strip()
-    rows = [(words, count)]
-    write_choice = input("Would you like to write a word.count document? (y/n): ").strip().lower()
-    with open("words.count", "w") as file:
-        for word, count in rows:
-            for word in word:
-                if write_choice == 'y':
-                    file.write(f"{word}:{count}\n")
-    print("Word count written to 'words.count' file.\n")
+def write_words_count(words):
+    # Counts and writes word frequencies to 'words.count'
+    word_dict = {}  # Manual dictionary for counting words
+    words = sorted(words)  # Sort the words list
+    for word in words:
+        if word in word_dict:
+            word_dict[word] += 1
+        else:
+            word_dict[word] = 1  # Initialize count
+
+    write_choice = input("Write word count to file? (y/n): ").strip().lower()
+    if write_choice == "y":
+        with open("words.count", "w") as file:
+            for word, count in word_dict.items():
+                file.write(f"{word}: {count}\n")
+        print("Word count saved to 'words.count'.\n")
+    else:
+        print("No file written.\n")
 
 def display_menu():
     print("Words List Program for Project 1")
@@ -85,7 +89,7 @@ def main():
         elif command.lower() == "count":
             count_words(word, count)
         elif command.lower() == "write":
-            write_words_count(words, count)
+            write_words_count(words)
         elif command.lower() == "exit":
             print("Goodbye!")
             break
