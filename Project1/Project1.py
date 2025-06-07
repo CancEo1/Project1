@@ -51,10 +51,11 @@ def count_words(words, count):
 # Function to write the the list into a word.count document 
 # and display it as rows
 def write_words_count(words):
-    # Counts and writes word frequencies to 'words.count'
+    # Counts and writes word occurences to 'words.count'
     word_dict = {}  # Manual dictionary for counting words
     words = sorted(words)  # Sort the words list
     for word in words:
+        word = word.lower().strip()
         if word in word_dict:
             word_dict[word] += 1
         else:
@@ -64,7 +65,7 @@ def write_words_count(words):
     if write_choice == "y":
         with open("words.count", "w") as file:
             for word, count in word_dict.items():
-                file.write(f"{word}: {count}\n")
+                file.write(f"{word}:{count}\n")
         print("Word count saved to 'words.count'.\n")
     else:
         print("No file written.\n")
